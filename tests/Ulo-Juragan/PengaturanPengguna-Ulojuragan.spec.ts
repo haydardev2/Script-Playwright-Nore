@@ -52,9 +52,9 @@ test('Pengaturan pengguna- Tambah', async ({page}) => {
         password : 'rahasia123',
         }
     const tambahpengguna = {
-        namalengkap : 'gatotkaca4',
-        username : 'gatotberotot4',
-        email : 'gatotkaca4@gmail.com',
+        namalengkap : 'buffet',
+        username : 'buffet',
+        email : 'buffet@gmail.com',
         alamatlengkap : 'majapahitempire',
         notelepon : '85173154578',
         password : 'rahasia123',

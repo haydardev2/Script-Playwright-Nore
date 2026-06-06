@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 async function Login( page : Page, login : any){
-    await page.goto(`${process.env.TEST_URL}/beranda`, { timeout: 20000 });
+    await page.goto(`${process.env.TEST_URL}/`, { timeout: 20000 });
     await page.getByPlaceholder('Contoh: ulo@gmail.com').fill(login.email);
     await page.getByPlaceholder('Minimal 8 karakter').fill(login.password);
     await page.getByPlaceholder('Minimal 8 karakter').press('Enter');

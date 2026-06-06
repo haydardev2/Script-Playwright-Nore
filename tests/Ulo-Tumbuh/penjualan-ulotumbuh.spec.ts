@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-async function Login( page , login : any){
+async function Login( page : Page , login : any){
     await page.goto(`${process.env.TEST_URL}`);
     await page.getByPlaceholder('Contoh: ulo@gmail.com').fill(login.email);
     await page.getByPlaceholder('Minimal 8 karakter').fill(login.password);
@@ -91,7 +91,7 @@ async function Tambahpaket(page : Page, tambahpaket : any) {
     await expect(successMessage).toBeVisible();
 }
 
-async function Pembayaran (page:Page, pembayaran) {
+async function Pembayaran (page:Page, pembayaranwa : any ) {
     
     await expect(page).toHaveURL(`${process.env.TEST_URL}/transaksi`); 
     await page.locator('.MuiPaper-root > div > .MuiButton-root').first().click();
@@ -105,10 +105,10 @@ async function Pembayaran (page:Page, pembayaran) {
     
     // Verify the initial phone number
     await page.getByRole('button', { name: 'Email' }).click();
-    await page.getByRole('textbox', { name: 'Contoh: budi93@gmail.com'}).fill(pembayaran.emailstruck);    
+    await page.getByRole('textbox', { name: 'Contoh: budi93@gmail.com'}).fill(pembayaranwa.emailstruck);    
     
     await page.getByRole('button', { name: 'Bayar' }).click();
-    await expect(page.getByLabel('Transaksi berhasil!')).toBeVisible();
+    await expect(page.getByLabel('Transaksi berhasil!')).toBeVisible({ timeout: 20000 });
     
 }
 
@@ -150,11 +150,11 @@ test('Tambah Produk', async ({page}) => {
     
     email : 'dogeheaven2@gmail.com',
     password : 'rahasia123',
-    namabarang : 'Neiro',
+    namabarang : 'zerebro',
     sku : '',
     harga : '9000',
-    keterangan : 'Neiro',
-    deskripsi : 'Neiro',
+    keterangan : 'zerebro',
+    deskripsi : 'zerebro',
     jumlahstok : '1000',
     };
 
@@ -172,7 +172,7 @@ test('Tambah Paket', async ({page}) => {
     const tambahpaket = {
 
         jumlahitem : '1000',
-        namapaket : 'Nama paket Natal',
+        namapaket : 'Peket tahun baru',
         hargapaket : '5000',
         keteranganpaket : 'keterangan',
         deskripsipaket : 'Deskripsi paket',

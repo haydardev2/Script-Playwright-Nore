@@ -204,7 +204,7 @@ test('daftar Stok-TambahSatuan', async ({page}) => {
         password : 'rahasia123',
     }
     const daftarstok = {
-        namabarang : 'Pc gaming',
+        namabarang : 'HP gaming',
         sku : '',
         harga : '300000',
         keterangan : 'user hp minggir dulu',
@@ -223,12 +223,12 @@ test('daftar Stok-TambahPaket', async ({page}) => {
         password : 'rahasia123',
     }
     const tambahpaket = {
-        namapaket : 'Datapiggy',
+        namapaket : 'brain2',
         sku : '',
         hargapaket : '3000',
         keteranganpaket : 'user hp minggir ',
         deskripsipaket : 'dilengkapi dengan gtx AI ',
-        jumlahitem : '10',
+        jumlahitem : '5',
 
     }
 // -----------------------------------------------------------------------------------------------------
@@ -241,7 +241,7 @@ test('daftar Kategori-TambahKategori', async ({page}) => {
         email : 'dogeheaven2@gmail.com',
         password : 'rahasia123',
     }
-    const tambahkategori = 'Degen';
+    const tambahkategori = 'Hype';
 
     await Login (page, login);
     await Tambahkategori(page, tambahkategori);

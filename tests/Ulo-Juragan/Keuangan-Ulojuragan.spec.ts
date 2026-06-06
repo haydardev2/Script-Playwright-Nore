@@ -34,6 +34,35 @@ async function Aturpengeluaran(page : Page, aturpengeluaran : any){
     await expect(successMessage).toBeVisible();
 }
 
+async function Laporanlabarugi(page : Page){
+    if ( await page.getByRole('link', { name: 'Atur Pengeluaran' }).isVisible()) {
+
+        await page.getByRole('link', { name: 'Atur Pengeluaran' }).click();
+
+      } else {
+        await page.getByRole('button', { name: 'Keuangan' }).click();
+    }
+
+    await page.getByRole('link', { name: 'Laporan Laba Rugi' }).click();
+    await expect(page).toHaveURL(`${process.env.TEST_URL}/keuangan/laporan-laba-rugi`, { timeout: 20000 }); 
+
+    await page.getByText('Hari ini').click();
+    await page.getByRole('option', { name: 'Minggu Terakhir' }).click();
+    await page.getByTestId('ArrowDropDownIcon').nth(2).click();
+}
+
+async function Statistiklabarugi(page : Page) {
+    if ( await page.getByRole('link', { name: 'Statistik Laba Rugi' }).isVisible()) {
+
+        await page.getByRole('link', { name: 'Statistik Laba Rugi' }).click();
+    } else {
+        await page.getByRole('button', { name: 'Keuangan' }).click();
+    }
+    
+    await page.getByRole('link', { name: 'Statistik Laba Rugi' }).click();
+    await expect(page).toHaveURL(`${process.env.TEST_URL}/keuangan/statistik-laba-rugi`, { timeout: 20000 });
+}
+
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
 test('Atur Pengeluaran-tambahpengeluaran', async ({page}) => {
@@ -43,7 +72,7 @@ test('Atur Pengeluaran-tambahpengeluaran', async ({page}) => {
         }
     const aturpengeluaran = {
         // isi keterangan tambah pengeluaran
-        nominalpengeluaran : '120000',
+        nominalpengeluaran : '1200',
         keterangan : 'Keterangan',
     }
     await Login (page, login);
@@ -56,19 +85,7 @@ test('Laporan Laba Rugi-check', async ({page}) => {
         password : 'rahasia123',
         }
     await Login (page, login);
-
-    if ( await page.getByRole('link', { name: 'Laporan Laba Rugi' }).isVisible()) {
-
-        await page.getByRole('link', { name: 'Laporan Laba Rugi' }).click();
-    } else {
-        await page.getByRole('button', { name: 'Keuangan' }).click();
-    }
-    await page.getByRole('link', { name: 'Laporan Laba Rugi' }).click();
-    await expect(page).toHaveURL(`${process.env.TEST_URL}/keuangan/laporan-laba-rugi`, { timeout: 20000 }); 
-
-    await page.getByText('Hari ini').click();
-    await page.getByRole('option', { name: 'Minggu Terakhir' }).click();
-    await page.getByTestId('ArrowDropDownIcon').nth(2).click();
+    await Laporanlabarugi (page);
 
 })
 
@@ -77,16 +94,7 @@ test('Statistik Laba Rugi-check', async ({page}) => {
         email : 'dogeheaven2@gmail.com',
         password : 'rahasia123',
         }
-    await Login (page, login);
-    if ( await page.getByRole('link', { name: 'Statistik Laba Rugi' }).isVisible()) {
 
-        await page.getByRole('link', { name: 'Statistik Laba Rugi' }).click();
-    } else {
-        await page.getByRole('button', { name: 'Keuangan' }).click();
-    }
-    
-    
-    await expect(page).toHaveURL(`${process.env.TEST_URL}/keuangan/laporan-laba-rugi`, { timeout: 20000 }); 
-
-    
+    await Login (page, login); 
+    await Statistiklabarugi (page);
 })

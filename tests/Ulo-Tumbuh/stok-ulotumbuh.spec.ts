@@ -34,7 +34,7 @@ async function Tambahproduk(page : Page, tambahproduk : any,){
     await expect(successMessage).toBeVisible();
 }
 
-async function Hapus(page, hapus : any){
+async function Hapus(page : Page, hapus : any){
     await page.locator('.MuiDataGrid-cell--withRenderer').first().click();
     await page.locator('.MuiDataGrid-virtualScrollerRenderZone > div:nth-child(2) > div').first().click();
     await page.locator('.MuiDataGrid-virtualScrollerRenderZone > div:nth-child(3) > div').first().click();
@@ -50,11 +50,11 @@ test ('Tambah Produk ulotumbuh', async ({page}) => {
     
         email : 'dogeheaven2@gmail.com',
         password : 'rahasia123',
-        namabarang : 'Hedera',
+        namabarang : 'URO',
         sku : '',
         harga : '9000',
-        keterangan : 'Hedera',
-        deskripsi : 'Hedera',
+        keterangan : 'URO',
+        deskripsi : 'URO',
         jumlahstok : '1000',
         };
     

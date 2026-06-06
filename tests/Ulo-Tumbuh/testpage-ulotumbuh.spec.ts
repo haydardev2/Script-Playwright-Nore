@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-async function Login( page , login : any){
+async function Login( page : Page, login : any){
     await page.goto(`${process.env.TEST_URL}`);
     await page.getByPlaceholder('Contoh: ulo@gmail.com').fill(login.email);
     await page.getByPlaceholder('Minimal 8 karakter').fill(login.password);

@@ -144,7 +144,7 @@ test('UKM-Pembelian (tambah Pembelian)', async ({page}) => {
 
     const tambahpembelian = {
          jumlahstok : '2',
-         hargabeli : '5000',
+         hargabeli : '500',
          keterangan : 'Keterangan',
         }
 
@@ -159,7 +159,7 @@ test('UKM-penjualan', async ({page}) => {
         password : 'rahasia123',
         }
         await Login (page, login);
-        await Tambahpembelian(page, Penjualan);
+        await Penjualan(page,);
 })
 
 test('UKM-Pengaturan ukm', async ({page}) => {
@@ -178,7 +178,7 @@ test('UKM-Pengaturan ukm', async ({page}) => {
     await page.getByRole('link', { name: 'Pengaturan UKM' }).click();
     await page.getByRole('button', { name: 'Tambah UKM' }).click();
     await page.locator('h2').getByRole('button').click();
-    await expect(page).toHaveURL(`${process.env.TEST_URL}/pengaturan-ukm`, { timeout: 20000 });
+    await expect(page).toHaveURL(`${process.env.TEST_URL}/ukm/pengaturan-ukm`, { timeout: 20000 });
 })
 
 test('UKM-metode pembayaran(tambah)', async ({page}) => {
@@ -187,7 +187,7 @@ test('UKM-metode pembayaran(tambah)', async ({page}) => {
         password : 'rahasia123',
         }
     const metodepembayaran = {
-        namametode : 'Metode panic selling',
+        namametode : 'Metode Dca',
         nomortujuan : '151788392',
         namapemegang : 'Haidarsultan',
 
